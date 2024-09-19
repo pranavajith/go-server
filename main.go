@@ -1,9 +1,7 @@
 package main
 
-import "fmt"
-
 func main() {
-	server := newAPIServer(":8000")
+	server := NewServer(":4040")
 	server.Run()
-	fmt.Println("Heyo!")
+
 }
