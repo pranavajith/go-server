@@ -1,0 +1,44 @@
+# Variables
+BINARY_NAME=firstServer
+PKG=./...
+
+# Build the Go project
+build:
+	@go build -o $(BINARY_NAME) main.go
+
+# Run the application
+run: build
+	@./$(BINARY_NAME)
+
+# Clean up binary and other build artifacts
+clean:
+	@go clean
+	@rm -f $(BINARY_NAME)
+
+# Run tests
+test:
+	@go test $(PKG) -v
+
+# Format Go code
+fmt:
+	@go fmt $(PKG)
+
+# Check for linting issues (if golint is installed)
+lint:
+	@golint $(PKG)
+
+# Tidy up the module dependencies
+tidy:
+	@go mod tidy
+
+# Run a full project workflow (build, test, format)
+all: @fmt test build
+
+# Install dependencies (optional)
+install-deps:
+	@go mod download
+
+push:
+	@git add .
+	@git commit -am "Committing Progress"
+	@git push origin master
