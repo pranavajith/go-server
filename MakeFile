@@ -40,5 +40,5 @@ install-deps:
 
 push:
 	@git add .
-	@git commit -am $com-msg
+	@git commit -am $msg
 	@git push origin master
